@@ -1,0 +1,256 @@
+[
+    {
+        "id": "ab03106b38ec883d",
+        "type": "tab",
+        "label": "Arduino uni",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "20fcd907a7b0c5b4",
+        "type": "serial in",
+        "z": "ab03106b38ec883d",
+        "name": "",
+        "serial": "3b0c7283561d9a4d",
+        "x": 150,
+        "y": 140,
+        "wires": [
+            [
+                "5fb769e18b28e93e"
+            ]
+        ]
+    },
+    {
+        "id": "5fb769e18b28e93e",
+        "type": "debug",
+        "z": "ab03106b38ec883d",
+        "name": "Serial monitor",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 560,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "1ee03356468d69ce",
+        "type": "serial control",
+        "z": "ab03106b38ec883d",
+        "name": "",
+        "serial": "3b0c7283561d9a4d",
+        "x": 470,
+        "y": 280,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "f1f41e1cdece9b30",
+        "type": "inject",
+        "z": "ab03106b38ec883d",
+        "name": "Stop COM4",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"serialport\":\"COM4\",\"serialbaud\":9600,\"databits\":8,\"parity\":\"none\",\"stopbits\":1,\"enabled\":false}",
+        "payloadType": "json",
+        "x": 170,
+        "y": 240,
+        "wires": [
+            [
+                "1ee03356468d69ce"
+            ]
+        ]
+    },
+    {
+        "id": "b7a9be4e870255e6",
+        "type": "inject",
+        "z": "ab03106b38ec883d",
+        "name": "Start COM4",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"serialport\":\"COM4\",\"serialbaud\":9600,\"databits\":8,\"parity\":\"none\",\"stopbits\":1,\"enabled\":true}",
+        "payloadType": "json",
+        "x": 170,
+        "y": 320,
+        "wires": [
+            [
+                "1ee03356468d69ce"
+            ]
+        ]
+    },
+    {
+        "id": "4c0db2ae6a50a4e1",
+        "type": "ui-slider",
+        "z": "ab03106b38ec883d",
+        "group": "477160d801d41957",
+        "name": "ServoAngle",
+        "label": "slider",
+        "tooltip": "",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "outs": "end",
+        "topic": "payload",
+        "topicType": "msg",
+        "thumbLabel": true,
+        "min": 0,
+        "max": "180",
+        "step": 1,
+        "className": "",
+        "x": 150,
+        "y": 440,
+        "wires": [
+            [
+                "b9e29772d1ddb24c"
+            ]
+        ]
+    },
+    {
+        "id": "5a098dc2ee0ddbbf",
+        "type": "serial out",
+        "z": "ab03106b38ec883d",
+        "name": "",
+        "serial": "3b0c7283561d9a4d",
+        "x": 710,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "b9e29772d1ddb24c",
+        "type": "template",
+        "z": "ab03106b38ec883d",
+        "name": "ServoAngle_translate",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "{{payload}};0",
+        "output": "str",
+        "x": 400,
+        "y": 440,
+        "wires": [
+            [
+                "5a098dc2ee0ddbbf",
+                "9b772e686b661eb0"
+            ]
+        ]
+    },
+    {
+        "id": "9b772e686b661eb0",
+        "type": "debug",
+        "z": "ab03106b38ec883d",
+        "name": "ServoAngle",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 730,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "3b0c7283561d9a4d",
+        "type": "serial-port",
+        "name": "",
+        "serialport": "COM4",
+        "serialbaud": "9600",
+        "databits": "8",
+        "parity": "none",
+        "stopbits": "1",
+        "waitfor": "",
+        "dtr": "none",
+        "rts": "none",
+        "cts": "none",
+        "dsr": "none",
+        "newline": "\\n",
+        "bin": "false",
+        "out": "char",
+        "addchar": "",
+        "responsetimeout": "10000"
+    },
+    {
+        "id": "477160d801d41957",
+        "type": "ui-group",
+        "name": "Elso Dashboard",
+        "page": "4ff22d9d15504bf5",
+        "width": "6",
+        "height": "1",
+        "order": -1,
+        "showTitle": true,
+        "className": "",
+        "visible": "true",
+        "disabled": "false"
+    },
+    {
+        "id": "4ff22d9d15504bf5",
+        "type": "ui-page",
+        "name": "Elso page",
+        "ui": "ae6ae8a1156828e4",
+        "path": "/page4",
+        "icon": "home",
+        "layout": "grid",
+        "theme": "a9d62fae366f9031",
+        "order": -1,
+        "className": "",
+        "visible": "true",
+        "disabled": "false"
+    },
+    {
+        "id": "ae6ae8a1156828e4",
+        "type": "ui-base",
+        "name": "My Dashboard",
+        "path": "/dashboard",
+        "includeClientData": true,
+        "acceptsClientConfig": [
+            "ui-notification",
+            "ui-control"
+        ],
+        "showPathInSidebar": false,
+        "navigationStyle": "default"
+    },
+    {
+        "id": "a9d62fae366f9031",
+        "type": "ui-theme",
+        "name": "Default Theme",
+        "colors": {
+            "surface": "#ffffff",
+            "primary": "#0094CE",
+            "bgPage": "#eeeeee",
+            "groupBg": "#ffffff",
+            "groupOutline": "#cccccc"
+        },
+        "sizes": {
+            "pagePadding": "12px",
+            "groupGap": "12px",
+            "groupBorderRadius": "4px",
+            "widgetGap": "12px"
+        }
+    }
+]
