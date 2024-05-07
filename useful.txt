@@ -1,0 +1,5 @@
+The following nodes are needed in the node.red palette:
+@flowfuse/node-red-dashboard
+node-red-node-serialport
+
+Arduino programming reference: https://www.arduino.cc/reference/en/

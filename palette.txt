@@ -1,3 +1,0 @@
-The following nodes are needed in the palette:
-@flowfuse/node-red-dashboard
-node-red-node-serialport
